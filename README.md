@@ -6,20 +6,18 @@
 stock-prediction-mlops/
 ├── notebooks/
 │   ├── 01_data_collection.ipynb
-│   ├── 02_exploratory_analysis.ipynb
-│   ├── 03_feature_engineering.ipynb
-│   ├── 04_model_training.ipynb
-│   ├── 05_model_evaluation.ipynb
-│   └── 06_model_serialization.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   └── 03_model_adjustment.ipynb
 ├── src/
-│   ├── data/
-│   ├── models/
-│   ├── api/
-│   └── monitoring/
-├── docker/
-├── tests/
-├── docs/
-└── deployment/
+│   ├── main.py
+├── models/
+│   ├── modelo_melhor_linearregression_petr4.joblib
+│   └── scaler_petr4.joblib
+├── data/
+│   └── dados_petr4.parquet
+├── dockerfile
+├── README.md
+└── requirements.txt
 ```
 
 #### Estrutura da API
