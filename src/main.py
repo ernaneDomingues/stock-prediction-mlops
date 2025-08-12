@@ -9,7 +9,7 @@ app = FastAPI(title="Stock Price Predictor")
 
 # Caminhos relativos
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "modelo_melhor_linearregression_petr4.joblib")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "melhor_modelo_linearregression_petr4.joblib")
 SCALER_PATH = os.path.join(BASE_DIR, "models", "scaler_petr4.joblib")
 
 # Carrega modelo e scaler

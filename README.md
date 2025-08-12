@@ -1,4 +1,4 @@
-# 📈 Stock Prediction MLOps
+# 📈 Stock Prediction MLOps – PETR4
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0-brightgreen)
@@ -20,16 +20,16 @@ Criar um modelo preditivo capaz de estimar o preço de fechamento da PETR4 no di
 
 stock-prediction-mlops/
 ├── notebooks/
-│   ├── 01\_data\_collection.ipynb       # Coleta e exploração dos dados
-│   ├── 02\_feature\_engineering.ipynb   # Criação de features e modelagem inicial
-│   └── 03\_model\_adjustment.ipynb      # Ajuste e avaliação de modelos
+│   ├── 01_data_collection.ipynb       # Coleta e exploração dos dados
+│   ├── 02_feature_engineering.ipynb   # Criação de features e modelagem inicial
+│   └── 03_model_adjustment.ipynb      # Ajuste e avaliação de modelos
 ├── src/
 │   ├── main.py                        # API FastAPI para servir o modelo
 ├── models/
-│   ├── modelo\_melhor\_linearregression\_petr4.joblib
-│   └── scaler\_petr4.joblib
+│   ├── melhor_modelo_linearregression_petr4.joblib
+│   └── scaler_petr4.joblib
 ├── data/
-│   └── dados\_petr4.parquet
+│   └── dados_petr4.parquet
 ├── Dockerfile
 ├── README.md
 └── requirements.txt
@@ -40,7 +40,17 @@ stock-prediction-mlops/
 
 ## 🧠 Pipeline do projeto
 
-![Diagrama](stock-prediction-mlops/diagram.png)
+```mermaid
+flowchart LR
+    A[Coleta de dados (yfinance)] --> B[Pré-processamento]
+    B --> C[Feature Engineering]
+    C --> D[Modelagem e Treinamento]
+    D --> E[Avaliação e Seleção do Melhor Modelo]
+    E --> F[Deploy da API com FastAPI]
+    F --> G[Containerização com Docker]
+````
+
+![Diagrama](diagram.png)
 
 ---
 
@@ -104,6 +114,23 @@ def predict_price(ticker: str = Query(..., description="Ticker da empresa, ex: P
 
 ---
 
+## 🖥️ Teste a API Online
+
+A API está disponível publicamente no Railway e pode ser testada diretamente:
+
+🔗 *[Acessar API no Railway](https://stock-prediction-mlops-production.up.railway.app/)*
+
+* *Documentação interativa (Swagger)*:
+  [https://stock-prediction-mlops-production.up.railway.app/docs](https://stock-prediction-mlops-production.up.railway.app/docs)
+
+* *Exemplo de requisição*:
+
+  ```
+  GET /predict-price?ticker=PETR4.SA
+  ```
+
+---
+
 ## 🐳 Executando com Docker
 
 ### 1️⃣ Build da imagem
@@ -122,20 +149,6 @@ A API estará disponível em:
 
 ```
 http://localhost:8000/docs
-```
-
----
-
-## 🌐 Exemplo de requisição
-
-*GET* `/predict-price?ticker=PETR4.SA`
-
-```json
-{
-  "ticker": "PETR4.SA",
-  "predicted_price": 37.25,
-  "prediction_date": "2025-08-11"
-}
 ```
 
 ---
