@@ -42,7 +42,7 @@ stock-prediction-mlops/
 
 ```mermaid
 flowchart LR
-    A[Coleta de dados (yfinance)] --> B[Pré-processamento]
+    A[Coleta de dados] --> B[Pré-processamento]
     B --> C[Feature Engineering]
     C --> D[Modelagem e Treinamento]
     D --> E[Avaliação e Seleção do Melhor Modelo]
